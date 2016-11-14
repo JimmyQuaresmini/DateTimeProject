@@ -14,11 +14,13 @@ import datumPkt.TimeMachine;
 public class MainDate {
 
 	public static void main(String[] args) {		
+		//today's date and datetime
 		LocalDateTime now = LocalDateTime.now();
 		LocalDate today = LocalDate.now();
 		System.out.println("Today the date and time(unformated): " + now);
 		ZoneId zoneId = ZoneId.of("Europe/Stockholm");
 		
+		//prints out seconds and days since 1970 and subtracts and adds periods
 		System.out.println("Seconds since 1st of January 1970: " + now.atZone(zoneId).toEpochSecond());
 		System.out.println("Days since 1st of January 1970: " + today.toEpochDay());
 		System.out.println();
@@ -32,6 +34,7 @@ public class MainDate {
 		
 		MyDateClass dateClass = new MyDateClass();
 		
+		//different custom methods I made with dates
 		System.out.println("Week day the first Christmas was on: " + dateClass.getFirstChristmas().getDayOfWeek());
 
 		System.out.println("Days since the very first Christmas: " + dateClass.daysSinceYearZero());
@@ -39,6 +42,7 @@ public class MainDate {
 		
 		System.out.println("Day the Eleventh of September was on: " + dateClass.getEleventhSep().getDayOfWeek());
 		
+		//prints the times in Tokyo and Chicago
 		ZoneId tokyo = ZoneId.of("Asia/Tokyo");
 		ZoneId chicago = ZoneId.of("America/Chicago");
 		DateTimeFormatter foreignFormatter = DateTimeFormatter.ofPattern("HH:mm");
@@ -47,6 +51,7 @@ public class MainDate {
 		System.out.println();
 		System.out.println("The time is now in Chicago: " + foreignFormatter.format(LocalTime.now(chicago)));
 		
+		//timetravel methods
 		TimeMachine tTravel = new TimeMachine();
 		LocalDateTime earlierDate = LocalDateTime.of(1939, 9, 1, 4, 45);
 		System.out.println();
@@ -67,6 +72,7 @@ public class MainDate {
 			tTravel.travelBackwards(anvDatTid);
 		}
 		
+		//calls and tests some time-related functions/methods
 		System.out.println();
 		TimeClass timeClass = new TimeClass();
 		timeClass.timeWork();
